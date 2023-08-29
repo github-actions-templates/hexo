@@ -16,12 +16,12 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
+          cache: 'npm' # 全局的 NPM 缓存，其中 node_modules 不会缓存
 
       - uses: actions/cache@v3
         with:
           path: node_modules
-          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('**/package-lock.json') }}
+          key: ${{ runner.OS }}-npm-cache-${{ hashFiles('package-lock.json') }}
           restore-keys: |
             ${{ runner.OS }}-npm-cache
 
